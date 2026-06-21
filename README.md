@@ -151,8 +151,8 @@ src/
 |------|------|
 | `VarEditorTable` | 主表格组件，管理表格列配置、数据操作、校验逻辑 |
 | `EditorCell` | 通用编辑器单元格，处理编辑状态切换、校验展示 |
-| `TextEditorCell` | 文本编辑单元格,基于EditorCell组件进行扩展，继承EditorCellCommonProps方法，，处理文本输入和校验 |
-| `SelectEditorCell` | 下拉选择单元格,基于EditorCell组件进行扩展，继承EditorCellCommonProps方法，，处理数据类型选择 |
+| `TextEditorCell` | 文本编辑单元格,基于EditorCell组件进行扩展，继承EditorCellCommonProps属性，处理文本输入和校验 |
+| `SelectEditorCell` | 下拉选择单元格,基于EditorCell组件进行扩展，继承EditorCellCommonProps属性，处理数据类型选择 |
 | `store` | 状态管理，提供变量增删改查方法 |
 
 ## 七、状态管理设计
