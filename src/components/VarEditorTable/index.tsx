@@ -103,7 +103,7 @@ const VarEditorTableInternal: React.FC = () => {
           if (existingNames.some(n => n.toLowerCase() === value.toLowerCase())) {
             return 'Name already exists';
           }
-          if (!value?.trim()) {
+          if (!value?.trim() && !name) {
             return 'Name cannot be empty';
           }
           return null;

@@ -167,7 +167,66 @@ const useStore = create(() => ({
 }));
 ```
 
-## 八、开发注意事项
+## 八、测试框架
+
+### 测试框架选型
+- **Vitest**: 与 Rsbuild/Vite 集成良好的现代测试框架，速度更快
+- **@testing-library/react**: React 组件测试库
+- **@testing-library/user-event**: 用户交互模拟
+
+### 运行测试
+```bash
+# 运行所有测试
+pnpm test
+
+# 运行测试（单次执行）
+pnpm test:run
+
+# 运行测试并生成覆盖率报告
+pnpm test:coverage
+```
+
+### 测试用例覆盖
+测试用例覆盖所有 AC 验收标准，共 40 个测试用例：
+
+| AC编号 | 测试内容 | 测试用例数 |
+|--------|----------|------------|
+| AC1 | 表格页面展示、列标题、序号自动生成、操作按钮 | 3 |
+| AC2 | 新增变量行、序号自动计算 | 3 |
+| AC3 | 删除变量行、批量删除、序号重排 | 3 |
+| AC4 | 编辑变量名、非空校验、唯一性校验（大小写不敏感） | 5 |
+| AC5 | 数据类型选择下拉框交互 | 1 |
+| AC6 | BOOL类型默认值编辑、大小写转换、无效值校验 | 3 |
+| AC7 | INT类型默认值编辑、整数校验、范围校验 | 3 |
+| AC8 | 注释编辑、任意文本输入、允许空值 | 3 |
+| 边界场景 | 全删行、新增多行、序号连续递增、初始数据验证 | 6 |
+| Store测试 | 增删改查操作、批量操作、边界处理 | 10 |
+
+### 测试逻辑说明
+编辑功能的测试遵循统一的交互流程：
+
+```
+1. Click on cell → enters edit mode (input field appears with autoFocus)
+2. Type a value → validation runs on every keystroke
+3. If validation fails → show error tooltip, input border turns red
+4. Complete editing by: blur (click outside) or press Enter
+5. On commit:
+   - If valid → call onChange, exit edit mode
+   - If invalid → stay in edit mode with error state
+```
+
+### 测试文件结构
+```
+src/
+├── test/                         # 测试工具目录
+│   ├── setup.ts                  # 测试环境配置
+│   └── utils.tsx                 # 测试渲染工具
+└── components/VarEditorTable/
+    ├── VarEditorTable.test.tsx   # 组件测试
+    └── store.test.tsx            # 状态管理测试
+```
+
+## 九、开发注意事项
 
 1. **热更新**: 由于 rsbuild 热更新插件存在兼容性问题，已在 `modern.config.ts` 中禁用
 2. **React版本**: 项目使用 React 18.x，以兼容 Arco Design 的 Message 组件

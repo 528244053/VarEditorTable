@@ -5,7 +5,10 @@
     "dev": "modern dev",
     "build": "modern build",
     "serve": "modern serve",
-    "lint": "biome check"
+    "lint": "biome check",
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:coverage": "vitest run --coverage"
   },
   "engines": {
     "node": ">=20"
@@ -22,10 +25,17 @@
     "@biomejs/biome": "1.9.4",
     "@modern-js/app-tools": "3.4.0",
     "@modern-js/tsconfig": "3.4.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
     "@types/node": "^20",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vitest/coverage-v8": "^4.1.9",
+    "jsdom": "^29.1.1",
     "less": "^4.6.6",
-    "typescript": "~5.7.3"
+    "typescript": "~5.7.3",
+    "vitest": "^4.1.9"
   }
 }
